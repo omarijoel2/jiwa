@@ -1,0 +1,2 @@
+{"timestamp":"2026-05-20T13:20:45+03:00","level":"ERROR","message":"DB Connection failed: Connection refused","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-20T13:20:45+03:00","level":"ERROR","message":"DB Connection failed: Connection refused","context":{"module":"check_db_phone_number_hash"}}

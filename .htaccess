@@ -1,0 +1,13 @@
+# Enable mod_rewrite
+RewriteEngine On
+
+# Prevent directory listing
+Options -Indexes
+
+# Redirect requests with .php extension to the URL without it
+RewriteCond %{THE_REQUEST} "\s/+(.+?)\.php[\s?]" [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Rewrite to serve .php files without requiring the extension
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L]

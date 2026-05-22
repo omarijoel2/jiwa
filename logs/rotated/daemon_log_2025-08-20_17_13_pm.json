@@ -1,0 +1,2 @@
+{"timestamp":"2025-08-20T17:13:03+03:00","level":"ERROR","message":"DB Connection failed: Network is unreachable","context":{"module":"hash_decoder"}}
+{"timestamp":"2025-08-20T17:13:03+03:00","level":"ERROR","message":"DB Connection failed: Network is unreachable","context":{"module":"check_db_phone_number_hash"}}

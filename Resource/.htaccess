@@ -1,0 +1,5 @@
+# Enable mod_rewrite
+RewriteEngine On
+
+# Prevent directory listing (disable viewing files in the folder)
+Options -Indexes

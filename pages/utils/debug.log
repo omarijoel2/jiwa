@@ -1,0 +1,25 @@
+Request Method: GET
+Received Data: Array
+(
+    [campaign_name] => test-494980
+    [campaign_description] => 
+    [campaign_shortcode] => 494980
+    [campaign_keyword] => jamoko
+    [minimum_amount] => 10
+)
+Request Method: GET
+Received Data: Array
+(
+    [campaign_name] => test-3
+    [campaign_description] => nnj
+    [campaign_shortcode] => 494980
+    [campaign_keyword] => jamoko
+    [minimum_amount] => 30
+)
+Request Method: GET
+Request Method: GET
+Request Method: GET
+Request Method: GET
+Request Method: GET
+Request Method: GET
+Request Method: GET
