@@ -12170,3 +12170,27 @@
 {"timestamp":"2026-05-22T15:24:11+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
 {"timestamp":"2026-05-22T15:24:12+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
 {"timestamp":"2026-05-22T15:24:14+03:00","level":"DEBUG","message":"No Message(s) found, sleeping for 10 seconds...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T15:24:21+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T15:24:21+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T15:24:21+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T15:24:22+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T15:24:24+03:00","level":"DEBUG","message":"Message(s) found, processing...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T15:24:31+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T15:24:31+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T15:24:31+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T15:24:32+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T15:24:32+03:00","level":"DEBUG","message":"No Message(s) found, sleeping for 10 seconds...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T15:24:36+03:00","level":"DEBUG","message":"Checking for phone numbers in queue...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T15:24:37+03:00","level":"DEBUG","message":"Phone number(s) found, processing...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T15:24:38+03:00","level":"DEBUG","message":{"status":"error","description":"No data found"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T15:24:38+03:00","level":"ERROR","message":"Error decoding hash: No data found","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T15:24:41+03:00","level":"DEBUG","message":"No winner(s) found, sleeping for 30 seconds...","context":{"module":"jiwab2c"}}
+{"timestamp":"2026-05-22T15:24:41+03:00","level":"DEBUG","message":{"status":"error","description":"No data found"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T15:24:41+03:00","level":"ERROR","message":"Error decoding hash: No data found","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T15:24:41+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T15:24:42+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T15:24:42+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T15:24:42+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T15:24:42+03:00","level":"DEBUG","message":"Message(s) found, processing...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T15:24:44+03:00","level":"DEBUG","message":{"status":"error","description":"No data found"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T15:24:44+03:00","level":"ERROR","message":"Error decoding hash: No data found","context":{"module":"hash_decoder"}}
