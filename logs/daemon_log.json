@@ -95,3 +95,161 @@
 {"timestamp":"2026-05-22T12:31:38+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
 {"timestamp":"2026-05-22T12:31:38+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
 {"timestamp":"2026-05-22T12:31:40+03:00","level":"DEBUG","message":"No Message(s) found, sleeping for 10 seconds...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:31:42+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:31:46+03:00","level":"DEBUG","message":"Checking for phone numbers in queue...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:46+03:00","level":"DEBUG","message":"Phone number(s) found, processing...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:46+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:46+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:47+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:47+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:47+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:47+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:48+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:31:48+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:31:48+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:31:48+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:48+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:49+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:49+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:49+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:49+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:50+03:00","level":"DEBUG","message":"Message(s) found, processing...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:31:50+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:50+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:50+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:50+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:51+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:51+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:51+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:51+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:51+03:00","level":"DEBUG","message":"Sleeping for 30 seconds...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:31:52+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:31:58+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:31:58+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:31:58+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:31:58+03:00","level":"DEBUG","message":"No Message(s) found, sleeping for 10 seconds...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:32:02+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:32:06+03:00","level":"DEBUG","message":"No winner(s) found, sleeping for 30 seconds...","context":{"module":"jiwab2c"}}
+{"timestamp":"2026-05-22T12:32:08+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:08+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:08+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:08+03:00","level":"DEBUG","message":"Message(s) found, processing...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:32:13+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:32:17+03:00","level":"DEBUG","message":"No Message(s) found, sleeping for 10 seconds...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:32:18+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:18+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:18+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:21+03:00","level":"DEBUG","message":"Checking for phone numbers in queue...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:21+03:00","level":"DEBUG","message":"Phone number(s) found, processing...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:22+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:22+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:22+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:22+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:23+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:32:23+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:23+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:24+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:24+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:24+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:24+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:25+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:25+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:25+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:25+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:26+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:26+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:26+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:26+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:27+03:00","level":"DEBUG","message":"Message(s) found, processing...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:32:27+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:27+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:27+03:00","level":"DEBUG","message":"Sleeping for 30 seconds...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:28+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:28+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:28+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:33+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:32:35+03:00","level":"DEBUG","message":"No Message(s) found, sleeping for 10 seconds...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:32:36+03:00","level":"DEBUG","message":"No winner(s) found, sleeping for 30 seconds...","context":{"module":"jiwab2c"}}
+{"timestamp":"2026-05-22T12:32:38+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:38+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:38+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:43+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:32:45+03:00","level":"DEBUG","message":"Message(s) found, processing...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:32:48+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:49+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:49+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:53+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:32:54+03:00","level":"DEBUG","message":"No Message(s) found, sleeping for 10 seconds...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:32:57+03:00","level":"DEBUG","message":"Checking for phone numbers in queue...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:57+03:00","level":"DEBUG","message":"Phone number(s) found, processing...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:58+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:58+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:58+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:58+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:59+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:59+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:59+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:32:59+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:59+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:59+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:32:59+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:00+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:00+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:00+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:00+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:02+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:02+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:03+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:03+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:03+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:33:03+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:03+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:04+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:04+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:04+03:00","level":"DEBUG","message":"Sleeping for 30 seconds...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:04+03:00","level":"DEBUG","message":"Message(s) found, processing...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:33:06+03:00","level":"DEBUG","message":"No winner(s) found, sleeping for 30 seconds...","context":{"module":"jiwab2c"}}
+{"timestamp":"2026-05-22T12:33:09+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:09+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:09+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:12+03:00","level":"DEBUG","message":"No Message(s) found, sleeping for 10 seconds...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:33:13+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:33:19+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:19+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:19+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:22+03:00","level":"DEBUG","message":"Message(s) found, processing...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:33:23+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:33:29+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:29+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:29+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:31+03:00","level":"DEBUG","message":"No Message(s) found, sleeping for 10 seconds...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:33:33+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
+{"timestamp":"2026-05-22T12:33:34+03:00","level":"DEBUG","message":"Checking for phone numbers in queue...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:34+03:00","level":"DEBUG","message":"Phone number(s) found, processing...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:35+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:35+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:35+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:35+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:36+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:36+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:36+03:00","level":"DEBUG","message":"No winner(s) found, sleeping for 30 seconds...","context":{"module":"jiwab2c"}}
+{"timestamp":"2026-05-22T12:33:36+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:36+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:37+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:37+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:37+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:37+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:38+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:38+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:38+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:38+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:39+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:39+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:39+03:00","level":"DEBUG","message":"Checking for decoded phone numbers to process...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:39+03:00","level":"DEBUG","message":"No decoded phone numbers to process","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:39+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"check_db_phone_number_hash"}}
+{"timestamp":"2026-05-22T12:33:39+03:00","level":"DEBUG","message":{"status":"error","description":"Insufficient balance!"},"context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:39+03:00","level":"ERROR","message":"Error decoding hash: Insufficient balance!","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:39+03:00","level":"DEBUG","message":"Sleeping for 30 seconds...","context":{"module":"hash_decoder"}}
+{"timestamp":"2026-05-22T12:33:41+03:00","level":"DEBUG","message":"Message(s) found, processing...","context":{"module":"jiwa_send_sms"}}
+{"timestamp":"2026-05-22T12:33:43+03:00","level":"DEBUG","message":"Sleeping for 10 seconds...","context":{"module":"jiwa_format_sms"}}
