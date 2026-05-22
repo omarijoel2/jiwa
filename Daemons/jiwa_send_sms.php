@@ -83,7 +83,7 @@ while (true) try {
                 'title' => 'Jiwa SMS',
                 'content' => $message,
                 'addresses' => [$msisdn],
-                'sender' => 'DIMACS INT',
+                'sender' => 'USHINDI-B',
                 'sendTime' => $datetime->format("Y-m-d\TH:i:s.u\Z"),
                 'dnd' => 0,
                 "isDeliveryReport"=> false,
