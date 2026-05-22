@@ -66,7 +66,13 @@ while (true) try {
             }
 
             $tken = json_decode($response, true);
-            $token = $tken['token'];
+            $token = $tken['token'] ?? null;
+
+            if (empty($token)) {
+                $logger->error("Failed to obtain Taifa Mobile token", ["module" => "jiwa_send_sms", "response" => $tken]);
+                sleep($loopDelay);
+                continue;
+            }
             $local_time = date('Y-m-d H:i:s');
             $datetime = new DateTime($local_time, new DateTimeZone(date_default_timezone_get()));
             $datetime->setTimezone(new DateTimeZone("UTC"));
@@ -103,11 +109,19 @@ while (true) try {
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
                 $sms_response = curl_exec($ch);
+                $http_code    = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                $curl_error   = curl_error($ch);
                 curl_close($ch);
 
+                if ($sms_response === false) {
+                    $logger->error("Taifa Mobile cURL error: " . $curl_error, ["module" => "jiwa_send_sms", "msisdn" => $msisdn]);
+                    continue;
+                }
+
                 $response_data = json_decode($sms_response, true);
+
                 if (isset($response_data['statusCode']) && $response_data['statusCode'] === 0) {
-                    $logger->debug("SMS sent successfully. Request ID: " . $response_data['requestId'], ["module" => "jiwa_send_sms", 'data' => $sms_data]);
+                    $logger->debug("SMS sent successfully. Request ID: " . ($response_data['requestId'] ?? 'n/a'), ["module" => "jiwa_send_sms", 'data' => $sms_data]);
 
                     if($is_winner == 1 || $is_winner == '1'){
                         $stmt3 = $mysqli->prepare("UPDATE winners_selection.unhash_queue SET is_sent_sms = 1 WHERE id = ?");
@@ -120,8 +134,13 @@ while (true) try {
                         $stmt3->execute();
                         $stmt3->close();
                     }
-                    
-
+                } else {
+                    $logger->error("Taifa Mobile rejected SMS (HTTP {$http_code})", [
+                        "module"   => "jiwa_send_sms",
+                        "msisdn"   => $msisdn,
+                        "request"  => $sms_data,
+                        "response" => $response_data ?: $sms_response,
+                    ]);
                 }
 
             }
