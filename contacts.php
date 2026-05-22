@@ -6,13 +6,13 @@
 
 <div class="container-fluid p-0">
     <h1 class="h3 mb-3">
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index">Home</a></li>
-				<li class="breadcrumb-item active">Contacts</li>
-			</ol>
-		</nav>
-	</h1>
+                <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                                <li class="breadcrumb-item active">Contacts</li>
+                        </ol>
+                </nav>
+        </h1>
 
     <!-- row -->
     <div class="row">
@@ -35,8 +35,8 @@
 
                 </style>
                 <div class="card-header d-flex justify-content-between align-items-center">
-					<h5 class="card-title mb-0">Contacts</h5>
-				</div>
+                                        <h5 class="card-title mb-0">Contacts</h5>
+                                </div>
 
                 <div class="collapse p-3 bg-light" id="customSearch">
                     <div class="row mt-3">
@@ -128,6 +128,11 @@
             scrollX: true,
             autoWidth: false,
             responsive: true,
+            pageLength: 5000,
+            lengthMenu: [
+                [25, 50, 100, 500, 1000, 5000, 10000],
+                ["25", "50", "100", "500", "1,000", "5,000", "10,000"]
+            ],
             columnDefs: [
                 { width: "10%", targets: 0 },  // Telephone No
                 { width: "15%", targets: 1 },  // Hashed Telephone No
