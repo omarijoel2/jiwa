@@ -72,14 +72,14 @@ class Callbacks {
     {
         $logger = new Logger('mpesa');
 
-        $callbackJSONData 	=	file_get_contents('php://input');
+        $callbackJSONData       =       file_get_contents('php://input');
 
         $ip = self::getClientIP();
         $isAllowed = self::checkIP($ip);
 
         // FIXME: Enable this when you get all safaricom IPs
         // if ($isAllowed) {
-            $callbackData 		=	json_decode($callbackJSONData);
+            $callbackData               =       json_decode($callbackJSONData);
 
             if (!$callbackData) {
                 http_response_code(400);
@@ -88,38 +88,54 @@ class Callbacks {
             }
 
             // Extract transaction details
-            $transactionType 	=	$callbackData->TransactionType;
-            $transID 			= 	$callbackData->TransID;
-            $transTime 			=	$callbackData->TransTime;
-            $transAmount 		=	$callbackData->TransAmount;
-            $businessShortCode 	=	$callbackData->BusinessShortCode;
-            $billRefNumber 		=	$callbackData->BillRefNumber;
-            $invoiceNumber 		=	$callbackData->InvoiceNumber;
-            $orgAccountBalance 	=	$callbackData->OrgAccountBalance;
-            $thirdPartyTransID 	=	$callbackData->ThirdPartyTransID;
-            $MSISDN 			=	$callbackData->MSISDN;
-            $firstName 			=	$callbackData->FirstName;
-            $middleName 		= 	$callbackData->MiddleName??'';
-            $lastName 			=	$callbackData->LastName??'';
+            $transactionType    =       $callbackData->TransactionType;
+            $transID                    =       $callbackData->TransID;
+            $transTime                  =       $callbackData->TransTime;
+            $transAmount                =       $callbackData->TransAmount;
+            $businessShortCode  =       $callbackData->BusinessShortCode;
+            $billRefNumber              =       $callbackData->BillRefNumber;
+            $invoiceNumber              =       $callbackData->InvoiceNumber;
+            $orgAccountBalance  =       $callbackData->OrgAccountBalance;
+            $thirdPartyTransID  =       $callbackData->ThirdPartyTransID;
+            $MSISDN                     =       $callbackData->MSISDN;
+            $firstName                  =       $callbackData->FirstName;
+            $middleName                 =       $callbackData->MiddleName??'';
+            $lastName                   =       $callbackData->LastName??'';
 
-            // TODO: send notification
-            $notifi = [
-                "transid"       =>  $transID,
-                'msisdn'        =>  $MSISDN,
-                'ref'           =>  $transID,
-                'amount'        =>  $transAmount,
-                'account'       =>  $billRefNumber,
-                'customer_name' =>  ucwords($firstName.' '.$middleName.' '.$lastName),
-                'shortcode'     =>  $businessShortCode,
-                'trans_type'    =>  $transactionType,
-                'trans_time'    =>  date('Y-m-d H:i:s',strtotime($transTime)),
-                'firstname'     =>  $firstName,
-                "middlename"    =>  $middleName,
-                "lastname"      =>  $lastName
-            ];
+            $customerName = trim(ucwords(strtolower($firstName . ' ' . $middleName . ' ' . $lastName)));
+
+            $transDateObj = DateTime::createFromFormat('YmdHis', $transTime);
+            $transDate = $transDateObj ? $transDateObj->format('Y-m-d H:i:s') : date('Y-m-d H:i:s');
 
             // Log request
-            $logger->info("Received C2B Confirmation request for MSISDN: " .$MSISDN, json_encode($callbackData) /* json_encode($callbackData, JSON_PRETTY_PRINT)*/ );
+            $logger->info("Received C2B Confirmation request for MSISDN: " . $MSISDN, json_encode($callbackData));
+
+            // Save transaction to database so the winner-selection trigger fires
+            try {
+                Query::insert(
+                    "INSERT INTO winners_selection.transactions
+                        (account, transaction_code, type, shortcode_id, msisdn, customer_name, trans_time, amount, created_at)
+                     VALUES
+                        (:account, :transaction_code, :type, :shortcode_id, :msisdn, :customer_name, :trans_time, :amount, NOW())",
+                    [
+                        'account'          => $billRefNumber,
+                        'transaction_code' => $transID,
+                        'type'             => $transactionType,
+                        'shortcode_id'     => (int) $businessShortCode,
+                        'msisdn'           => $MSISDN,
+                        'customer_name'    => $customerName,
+                        'trans_time'       => $transDate,
+                        'amount'           => (float) $transAmount,
+                    ]
+                );
+                $logger->info("Transaction saved to DB: " . $transID, ["module" => "c2b_confirmation"]);
+            } catch (\Exception $e) {
+                $logger->error("Failed to save transaction: " . $e->getMessage(), ["module" => "c2b_confirmation"]);
+            }
+
+            // Acknowledge to Safaricom
+            header('Content-Type: application/json');
+            echo json_encode(["ResultCode" => 0, "ResultDesc" => "Accepted"]);
         // }
     }
 
@@ -186,34 +202,34 @@ class Callbacks {
     {
         $logger = new Logger('mpesa');
 
-        $callbackJSONData	 				=	file_get_contents('php://input');
+        $callbackJSONData                                       =       file_get_contents('php://input');
 
         $ip = self::getClientIP();
         $isAllowed = self::checkIP($ip);
 
         // FIXME: Enable this when you get all safaricom IPs
         // if ($isAllowed) {
-        $callbackData 						= 	json_decode($callbackJSONData);
+        $callbackData                                           =       json_decode($callbackJSONData);
         if (!$callbackData) {
             http_response_code(400);
             echo json_encode(["error" => "Invalid JSON payload"]);
             return;
         }
-        $resultCode 						=  	$callbackData->Result->ResultCode;
+        $resultCode                                             =       $callbackData->Result->ResultCode;
 
         // success
         if($resultCode == 0 || $resultCode == '0'){
-            $resultDesc 						=	$callbackData->Result->ResultDesc;
-            $originatorConversationID 			= 	$callbackData->Result->OriginatorConversationID;
-            $conversationID 					=	$callbackData->Result->ConversationID;
-            $transactionID 						=	$callbackData->Result->TransactionID;
-            // $amount 							=	$callbackData->Result->ResultParameters->ResultParameter[0]->Value;
-            $transCompletedTime 				=	date('Y-m-d H:i:s');
+            $resultDesc                                                 =       $callbackData->Result->ResultDesc;
+            $originatorConversationID                   =       $callbackData->Result->OriginatorConversationID;
+            $conversationID                                     =       $callbackData->Result->ConversationID;
+            $transactionID                                              =       $callbackData->Result->TransactionID;
+            // $amount                                                  =       $callbackData->Result->ResultParameters->ResultParameter[0]->Value;
+            $transCompletedTime                                 =       date('Y-m-d H:i:s');
 
-            // $transCompletedTime 				=	$callbackData->Result->ResultParameters->ResultParameter[5]->Value;
-            // $debitPartyCharges 					= 	$callbackData->Result->ResultParameters->ResultParameter[5]->Value;
-            // $receiverPartyPublicName 			= 	$callbackData->Result->ResultParameters->ResultParameter[6]->Value;
-            // $currency							=	$callbackData->Result->ResultParameters->ResultParameter[7]->Value;
+            // $transCompletedTime                              =       $callbackData->Result->ResultParameters->ResultParameter[5]->Value;
+            // $debitPartyCharges                                       =       $callbackData->Result->ResultParameters->ResultParameter[5]->Value;
+            // $receiverPartyPublicName                         =       $callbackData->Result->ResultParameters->ResultParameter[6]->Value;
+            // $currency                                                        =       $callbackData->Result->ResultParameters->ResultParameter[7]->Value;
 
             // if (preg_match('/^(\d+)\s*-\s*(.+)$/', $receiverPartyPublicName, $matches)) {
             //     $msisdn = $matches[1];
@@ -222,19 +238,19 @@ class Callbacks {
             // }
 
             // $result=array(
-            //     "resultCode"						=>	$resultCode,
-            //     "resultDesc"						=>	$resultDesc,
-            //     "originatorConversationID"			=>	$originatorConversationID,
-            //     "conversationID"					=>	$conversationID,
-            //     "transactionID"						=>	$transactionID,
-            //     "initiatorAccountCurrentBalance"	=>	$initiatorAccountCurrentBalance,
-            //     "debitAccountCurrentBalance"		=>	$debitAccountCurrentBalance,
-            //     "amount"							=>	$amount,
-            //     "debitPartyAffectedAccountBalance"	=>	$debitPartyAffectedAccountBalance,
-            //     "transCompletedTime"				=>	date("Y-m-d H:i:s"),
-            //     "debitPartyCharges"					=>	$debitPartyCharges,
-            //     "receiverPartyPublicName"			=>	$receiverPartyPublicName,
-            //     "currency"							=>	$currency
+            //     "resultCode"                                         =>      $resultCode,
+            //     "resultDesc"                                         =>      $resultDesc,
+            //     "originatorConversationID"                   =>      $originatorConversationID,
+            //     "conversationID"                                     =>      $conversationID,
+            //     "transactionID"                                              =>      $transactionID,
+            //     "initiatorAccountCurrentBalance"     =>      $initiatorAccountCurrentBalance,
+            //     "debitAccountCurrentBalance"         =>      $debitAccountCurrentBalance,
+            //     "amount"                                                     =>      $amount,
+            //     "debitPartyAffectedAccountBalance"   =>      $debitPartyAffectedAccountBalance,
+            //     "transCompletedTime"                         =>      date("Y-m-d H:i:s"),
+            //     "debitPartyCharges"                                  =>      $debitPartyCharges,
+            //     "receiverPartyPublicName"                    =>      $receiverPartyPublicName,
+            //     "currency"                                                   =>      $currency
             // );
 
             $trans_queue = Query::fetchOne("SELECT * FROM winners_selection.transactions_queue WHERE conversationID = :conversationID", ['conversationID' => $conversationID]);
@@ -317,15 +333,15 @@ class Callbacks {
                 $logger->debug("Last Insert Id", ["module" => "jiwab2c", "lastInsertId" => $lastInsertId]);
                 // delete from transactions queue
                 $affectedRows = Query::updateDelete("DELETE FROM winners_selection.transactions_queue WHERE conversationID = :conversationID", [
-                 'conversationID' => 'conversationID'
+                 'conversationID' => $conversationID
                  ]);
             }
 
         }else{
-            $resultDesc 						=	$callbackData->Result->ResultDesc;
-            $originatorConversationID 			= 	$callbackData->Result->OriginatorConversationID;
-            $conversationID 					=	$callbackData->Result->ConversationID;
-            $transactionID 						=	$callbackData->Result->TransactionID;
+            $resultDesc                                                 =       $callbackData->Result->ResultDesc;
+            $originatorConversationID                   =       $callbackData->Result->OriginatorConversationID;
+            $conversationID                                     =       $callbackData->Result->ConversationID;
+            $transactionID                                              =       $callbackData->Result->TransactionID;
 
             $trans_queue = Query::fetchOne("SELECT * FROM winners_selection.transactions_queue WHERE conversationID = :conversationID", ['conversationID' => $conversationID]);
             $shortcode_id = $trans_queue['shortcode_id'];
@@ -384,7 +400,7 @@ class Callbacks {
                 if($lastInsertId){
                     // delete from transactions queue
                     $affectedRows = Query::updateDelete("DELETE FROM winners_selection.transactions_queue WHERE conversationID = :conversationID", [
-                        'conversationID' => 'conversationID'
+                        'conversationID' => $conversationID
                     ]);
                 }
 

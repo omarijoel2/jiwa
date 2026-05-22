@@ -77,8 +77,6 @@ while (true){
         sleep($loopDelay);
     }catch(Exception $e){
         $logger->error("An error occurred: " . $e->getMessage(), ["module" => "jiwa_format_sms"]);
+        sleep($loopDelay);
     }
-
-    $logger->debug("Sleeping for $loopDelay seconds...", ["module" => "jiwa_format_sms"]);
-    sleep($loopDelay);
 }

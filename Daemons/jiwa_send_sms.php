@@ -61,7 +61,8 @@ while (true) try {
             if ($response === FALSE) 
             {
                 $logger->error("Error occurred while fetching token data from server ", ["module" => "jiwa_send_sms"]);
-                die('Error occurred while fetching data from server');
+                sleep($loopDelay);
+                continue;
             }
 
             $tken = json_decode($response, true);

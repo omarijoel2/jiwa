@@ -1,4 +1,98 @@
+-- =============================================================================
+-- migration.sql
+-- Run this against the winners_selection database to fix all schema issues.
+-- =============================================================================
+
 USE winners_selection;
+
+-- -----------------------------------------------------------------------------
+-- 1. Add missing columns to unhash_queue
+--    is_sms_decode: tracks whether the SMS template has been formatted
+--    sms:           stores the formatted SMS message ready to send
+-- -----------------------------------------------------------------------------
+ALTER TABLE winners_selection.unhash_queue
+    ADD COLUMN IF NOT EXISTS sms TEXT NULL AFTER transaction_code,
+    ADD COLUMN IF NOT EXISTS is_sms_decode TINYINT(1) NOT NULL DEFAULT 0 AFTER is_unhashed;
+
+-- -----------------------------------------------------------------------------
+-- 2. Add missing columns to cronjob_config
+--    start_date / end_date:             date-range gate for campaigns
+--    sms_template_winner:               template sent to winners
+--    sms_template_participant:          template sent to non-winners
+--
+--    Supported placeholders in templates:
+--      {username}        customer name
+--      {sent_amount}     amount the customer sent
+--      {winning_amount}  amount won
+--      {keyword}         M-Pesa account / keyword
+--      {paybill}         M-Pesa paybill shortcode
+-- -----------------------------------------------------------------------------
+ALTER TABLE winners_selection.cronjob_config
+    ADD COLUMN IF NOT EXISTS start_date DATE NULL AFTER enabled,
+    ADD COLUMN IF NOT EXISTS end_date DATE NULL AFTER start_date,
+    ADD COLUMN IF NOT EXISTS sms_template_winner TEXT NULL AFTER end_date,
+    ADD COLUMN IF NOT EXISTS sms_template_participant TEXT NULL AFTER sms_template_winner;
+
+-- Set default SMS templates for any campaigns that don't have one yet
+UPDATE winners_selection.cronjob_config
+SET sms_template_winner = 'Congratulations {username}! You have won KES {winning_amount} for sending KES {sent_amount} to {keyword} paybill {paybill}. Your payout is being processed.'
+WHERE sms_template_winner IS NULL OR sms_template_winner = '';
+
+UPDATE winners_selection.cronjob_config
+SET sms_template_participant = 'Thank you {username} for sending KES {sent_amount} to {keyword} paybill {paybill}. Keep sending for a chance to win!'
+WHERE sms_template_participant IS NULL OR sms_template_participant = '';
+
+-- -----------------------------------------------------------------------------
+-- 3. Fix the after_transaction_insert trigger
+--    Old trigger was on mpesa.transactions — this app writes to
+--    winners_selection.transactions, so the trigger must live there.
+-- -----------------------------------------------------------------------------
+DROP TRIGGER IF EXISTS winners_selection.after_transaction_insert;
+
+DELIMITER $$
+CREATE TRIGGER `after_transaction_insert`
+AFTER INSERT ON `winners_selection`.`transactions`
+FOR EACH ROW
+BEGIN
+    CALL winners_selection.CheckWinner(NEW.id);
+END$$
+DELIMITER ;
+
+-- -----------------------------------------------------------------------------
+-- 4. Fix the update_into_contacts trigger
+--    Original trigger was missing hashed_msisdn in the INSERT column list
+--    which caused the ON DUPLICATE KEY UPDATE clause to fail.
+-- -----------------------------------------------------------------------------
+DROP TRIGGER IF EXISTS winners_selection.update_into_contacts;
+
+DELIMITER $$
+CREATE TRIGGER update_into_contacts
+AFTER UPDATE ON winners_selection.unhash_queue
+FOR EACH ROW
+BEGIN
+    IF NEW.is_unhashed = 1 AND OLD.is_unhashed = 0 THEN
+        INSERT INTO winners_selection.contacts
+            (hashed_msisdn, unhashed_msisdn, shortcode, keyword, customer_name)
+        VALUES
+            (NEW.hashed_msisdn, NEW.unhashed_msisdn, NEW.shortcode, NEW.keyword, NEW.customer_name)
+        ON DUPLICATE KEY UPDATE
+            unhashed_msisdn = VALUES(unhashed_msisdn),
+            keyword         = VALUES(keyword),
+            customer_name   = VALUES(customer_name);
+    END IF;
+END$$
+DELIMITER ;
+
+-- -----------------------------------------------------------------------------
+-- 5. Fix and replace the CheckWinner stored procedure
+--    Changes:
+--      a) Reads from winners_selection.transactions (was mpesa_test.transactions)
+--      b) Fetches customer_name and transaction_code from the transaction row
+--      c) Inserts winners AND participants into unhash_queue (was commented out)
+--      d) winners_log INSERT now includes all NOT NULL columns
+--      e) SMS templates fetched from cronjob_config and stored in unhash_queue
+-- -----------------------------------------------------------------------------
+DROP PROCEDURE IF EXISTS winners_selection.CheckWinner;
 
 DELIMITER $$
 
