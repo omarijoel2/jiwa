@@ -15,7 +15,7 @@ function hashDecode($data)
     $url = "https://transactions.prasams.com/api/v1/decode-hash";
     $headers = [
         "Content-Type: application/json",
-        "x-api-key: 746211995a54d20007e53fc615d5b4380b983b3ea1b08063bd99cf077ad2a33b"
+        "x-api-key: 6184c7b498807c7a5167e60dde3a79ee58a71ddd3b02635aa9c5228fa08fc99c"
     ];
     $maxRetries = 3;
 
